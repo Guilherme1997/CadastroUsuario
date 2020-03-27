@@ -1,0 +1,63 @@
+<h1>{{titulo}}</h1>
+<div class="row">
+  <div class="col-12">
+    <div class="mt-4">
+      <form [formGroup]="usuarioFormulario" (submit)="submitForm()">
+        <div class="card mt-4">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="nome">Nome</label>
+                  <input id="nome" class="form-control" formControlName="Nome" />
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="nome">Sexo</label>
+                  <select class="form-control" formControlName="SexoID" id="exampleFormControlSelect1">
+                    <option></option>
+                    <option *ngFor="let sexo of sexos" [value]="sexo.SexoID">
+                      {{sexo.Descricao}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="descricao">Data de Nascimento</label>
+                  <input type="text" id="descricao" class="form-control"  [dropSpecialCharacters]="false" formControlName="DataNascimento"
+                    mask="00/00/0000" />
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="descricao">Email</label>
+                  <input id="descricao" class="form-control" formControlName="Email" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="descricao">Senha</label>
+                  <input id="descricao" type="password" class="form-control" formControlName="Senha" />
+                </div>
+              </div>
+              <div class="col-4 mt-4" [hidden]="itemFormularioCadastro">
+                <label for="ativo">Ativo</label>&nbsp;
+                <input type="checkbox" id="ativo" formControlName="Ativo">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 float-right">
+          <button routerLink="/usuario" class="mr-4 mb-4 btn btn-secondary">Voltar</button>
+          <button [disabled]="usuarioFormulario.invalid" type="submit" class="mr-4 mb-4 btn btn-primary">Salvar</button>
+          <button [hidden]="itemFormularioCadastro"type="button" (click)="deletar()" class="mb-4 btn btn-danger">Deletar</button>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

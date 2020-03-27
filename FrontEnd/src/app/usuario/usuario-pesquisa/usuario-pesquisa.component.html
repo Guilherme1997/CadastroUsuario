@@ -1,0 +1,21 @@
+<form [formGroup]="formularioDePesquisa" (submit)="submitForm()">
+    <div class="row">
+        <div class="col-4">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input id="nome" class="form-control" formControlName="Nome" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="form-group">
+                <label for="ativo">Ativo</label>&nbsp;
+                <input type="checkbox" id="ativo" formControlName="Ativo">
+            </div>
+        </div>
+        <div class="col-4">
+            <button (click)="enviarDadosDePesquisa()" type="button" class="btn btn-light">Filtrar</button>
+        </div>
+    </div>
+</form>

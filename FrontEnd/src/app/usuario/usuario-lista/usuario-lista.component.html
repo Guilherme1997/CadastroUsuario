@@ -1,0 +1,53 @@
+<div class="mt-4">
+  <div>
+    <app-usuario-pesquisa (dadosDaPesquisa)="filtrar($event)" ></app-usuario-pesquisa>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <a routerLink="adicionar" role="button" class="btn btn-light btn-sm btn-newcategorie">
+      <i class="fas fa-plus"></i> Novo Usuario
+    </a>
+  </div>
+  <div class="row mt-4">
+    <div class="col-12">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Data de Nascimento</th>
+            <th scope="col">Email</th>
+            <th scope="col">Sexo</th>
+            <th scope="col">Ativo</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios;">
+            <td>
+              <p>{{usuario.Nome}}</p><br>
+            </td>
+            <td>
+              <p>{{usuario.DataNascimento | date: 'dd/MM/yyyy' }}</p><br>
+            </td>
+            <td>
+              <p>{{usuario.Email}}</p><br>
+            </td>
+            <td>
+              <p>{{usuario.Sexo.Descricao}}</p><br>
+            </td>
+            <td>
+              <p>{{usuario.Ativo ? '✔' : '✘'}}</p><br>
+            </td>
+            <td>
+              <a [routerLink]="[usuario.UsuarioID,'editar']" role="button"
+                class="btn-table-actions btn btn-light btn-sm mr-4">Editar</a>
+
+              <button (click)="deletarUsuario(usuario)" data-toggle="modal" data-target="#confirmDelete" type="button"
+                class="btn-table-actions btn btn-danger btn-sm">Deletar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
